@@ -1,0 +1,11 @@
+discord
+discord.py
+youtube-dl
+PyNaCl
+certifi
+charset-normalizer
+idna
+python-dotenv
+requests
+urllib3
+proxmoxer
