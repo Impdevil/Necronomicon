@@ -24,7 +24,6 @@
     <Content Include="requirements.txt" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="c2\app.py" />
     <Compile Include="c2\Proxmox_instance.py" />
     <Compile Include="c2\__init__.py" />
     <Compile Include="Ghroth\app.py" />

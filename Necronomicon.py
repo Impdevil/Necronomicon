@@ -1,4 +1,5 @@
 import Ghroth.app
+import c2
 import asyncio
 
 
@@ -16,8 +17,7 @@ def __main__():
     #    loop = asyncio.new_event_loop()
 
     loop.create_task(Ghroth.app.start_bot())
-
-
+    loop.create_task(c2.LoadConfig())
 
     loop.run_forever()
 

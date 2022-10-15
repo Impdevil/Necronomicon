@@ -162,4 +162,4 @@ async def hello(ctx):
     await ctx.send("Hello, may I sing you a sweet tune? Keep the eater of worlds -Azathoth, in slumber? !play to play a song.")
 
 def start_bot():
-    bot.run(DISCORD_TOKEN)
+    return bot.start(DISCORD_TOKEN)
