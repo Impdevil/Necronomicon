@@ -22,4 +22,5 @@ async  def LoadConfig():
 
 
     prox_instances.get_vm_status();
+    prox_instances.start_vm(config["Servers"][0]["id"],100)
     return  "potaot"
