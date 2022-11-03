@@ -21,5 +21,5 @@ class Proxmox_instance:
     def start_vm(self, nodeID, vmid):
         if self.api:
             node = self.api.nodes.get()
-            qemu = self.api.nodes(nodeID).qemu.vmid.status.current.get()
-            print(qemu)
+            #qemu = self.api.nodes(nodeID).qemu.vmid.status.current.get()
+            #print(qemu)

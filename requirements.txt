@@ -1,5 +1,6 @@
 discord
 discord.py
+discord-webhook
 youtube-dl
 PyNaCl
 certifi
