@@ -15,7 +15,7 @@ SENTFORTODAY = False
 
 async def wait_till_ten():
     global SENTFORTODAY
-    #await asyncio.sleep (15)#*60)
+    await asyncio.sleep (15)#*60)
     now = dt.datetime.now()
     if now.hour == 22 and SENTFORTODAY == False:
         print("sending discord notifcation")
@@ -23,16 +23,16 @@ async def wait_till_ten():
         SENTFORTODAY = True
     else:
         print("to early " + str(now.hour)+":"+str(now.minute))
-        SENTFORTODAY = False
+        #SENTFORTODAY = False
 
 
 def send_discord_notifcation():
     DISCORD_TOKEN = os.getenv("discord_token_nightGaunt")
-
+    allowed_mentions = {'parse': ["everyone"],}
     if RetrieveDayData.WillItRain(RetrieveDayData.GetDayWeatherFromData(GetData.GetForecast())):
-        hook = discord_webhook.DiscordWebhook(url=DISCORD_TOKEN, rate_limit_retry=True, content="@all tomorrow it is raining, so dont put on a washing")
+        hook = discord_webhook.DiscordWebhook(url=DISCORD_TOKEN, rate_limit_retry=True,allowed_mentions=allowed_mentions, content="@everyone tomorrow it is raining, so dont put on a washing")
     else:
-        hook = discord_webhook.DiscordWebhook(DISCORD_TOKEN,rate_limit_retry=True,content="@all put a washing on now as tomorrow will be a nice enough day to dry washing.")
+        hook = discord_webhook.DiscordWebhook(DISCORD_TOKEN,rate_limit_retry=True,allowed_mentions=allowed_mentions,content="@everyone put a washing on now as tomorrow will be a nice enough day to dry washing.")
     respo = hook.execute()
     print(respo)
 

@@ -15,7 +15,7 @@ def __main__():
 
 
     loop.create_task(Ghroth.app.start_bot())
-    loop.create_task(c2.LoadConfig())
+    loop.create_task(c2.Start_bot())
     loop.create_task(WeatherChecker.wait_till_ten())
 
     loop.run_forever()
