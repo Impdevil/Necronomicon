@@ -18,6 +18,8 @@ async  def LoadConfig():
         for server in config["Servers"]:
             #print(server)
             prox_instances = pi.Proxmox_instance(server["ip"], server["port"],server["username"],server["tokenID"],server["token"],server["id"])
+            prox_instances.WHITELIST = config["WhiteList"]
+            print(prox_instances.WHITELIST)
     except:
         print("Config failed to load.")
 

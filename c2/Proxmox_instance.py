@@ -4,22 +4,36 @@ import proxmoxer
 from proxmoxmanager import ProxmoxManager
 import asyncio
 import json
+import logging
 
 class Proxmox_instance:
     api=None
-    
+    WHITELIST = None
     
     def __init__(self, ip, port,username,tokenID,token,nodeID):
-        self.api = proxmoxer.ProxmoxAPI(ip,port=port,user=username, verify_ssl=False, token_name=tokenID, token_value=token)
-        self.ProxManager = ProxmoxManager(host=ip+":"+port, user=username,token_name=tokenID,token_value=token)
-        self.nodeID = nodeID
+        try:
+            self.api = proxmoxer.ProxmoxAPI(ip,port=port,user=username, verify_ssl=False, token_name=tokenID, token_value=token)
+            self.ProxManager = ProxmoxManager(host=ip+":"+port, user=username,token_name=tokenID,token_value=token)
+
+            logging.info("connection to server: "  + ip + ":" + port + " as user: " + username +" has been made")
+
+            self.nodeID = nodeID
+        except:
+            raise Exception("connection Failed")
+            logging.critical("Connection to server failed.")
+
+
 
     def get_vm_status(self):
+        statuslist= []
         for node in self.api.nodes.get():
-
             for vm in self.api.nodes(node["node"]).qemu.get():
                 #print(vm)
+                statuslist.append('{}:{} status: {} for {}'.format(vm['vmid'], vm['name'],vm["status"], vm['uptime']))
                 print('{}:{} status: {} for {}'.format(vm['vmid'], vm['name'],vm["status"], vm['uptime']))
+        return statuslist
+
+
 
     async def start_vm(self,  vmid):
         if self.api:

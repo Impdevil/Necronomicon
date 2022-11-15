@@ -5,6 +5,7 @@ import os
 import WeatherChecker.GetData
 import WeatherChecker.RetrieveDayData
 
+import logging
 daysforecast = GetData.GetForecast()
 print(RetrieveDayData.WillItRain(RetrieveDayData.GetDayWeatherFromData(daysforecast)))
 SENTFORTODAY = False
@@ -13,17 +14,22 @@ SENTFORTODAY = False
 #this as a loop needs to act once every day at 22:00 everyday, send the notifcation
 #to discord through a webhook.
 
+async def periodic_check():
+    while True:
+        await wait_till_ten()
+        await asyncio.sleep(60*15)
+
 async def wait_till_ten():
     global SENTFORTODAY
-    await asyncio.sleep (15)#*60)
     now = dt.datetime.now()
     if now.hour == 22 and SENTFORTODAY == False:
         print("sending discord notifcation")
         send_discord_notifcation()
+        logging.info('sent weather next day.')
         SENTFORTODAY = True
-    else:
-        print("to early " + str(now.hour)+":"+str(now.minute))
-        #SENTFORTODAY = False
+    elif now.hour != 22:
+        print("to early " + str(now.hour)+":"+str(now.minute)+":"+str(now.second))
+        SENTFORTODAY = False
 
 
 def send_discord_notifcation():
