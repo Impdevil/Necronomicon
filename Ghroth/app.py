@@ -6,9 +6,7 @@ from discord.ext import commands,tasks
 import os
 from dotenv import load_dotenv
 import youtube_dl
-
-
-
+import logging
 
 load_dotenv()
 
@@ -58,8 +56,6 @@ class YTDLSource(discord.PCMVolumeTransformer):
 
 
 
-
-
 @bot.command(name='join',help="Tells the bot to join the voice channel")
 async def join(ctx):
     if not ctx.message.author.voice:
@@ -103,7 +99,6 @@ async def stream(ctx,url):
         voice_channel = server.voice_client
         if voice_channel.is_playing():
             ctx.send("A song is already playing, adding to the playlist")
-        print("potato")
         async with ctx.typing():
             with ytdl:
                 song_info = ytdl.extract_info(url, download=False)

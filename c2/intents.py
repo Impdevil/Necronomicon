@@ -104,7 +104,7 @@ async def vm_status(ctx):
 async def Check_whiteList(ctx):
     logging.info("whitelist Check: "+ ctx.author.display_name)
     if ctx.author.display_name in c2.prox_instances.WHITELIST:
-        print("yo do the thing")
+        #print("yo do the thing")
         await ctx.send("Access Granted.")
         return True
     else: 
