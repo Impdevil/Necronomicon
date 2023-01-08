@@ -1,0 +1,10 @@
+[Unit]
+Description=Chatbot for controlling proxmox systems
+
+
+[Service]
+Type=simple
+User=pi
+WorkingDirectory=/home/pi/Necronomicon/
+Restart=always
+execStart=env/bin/python3 Necronomicon.py
