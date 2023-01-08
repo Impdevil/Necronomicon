@@ -7,4 +7,4 @@ Type=simple
 User=pi
 WorkingDirectory=/home/pi/Necronomicon/
 Restart=always
-execStart=env/bin/python3 Necronomicon.py
+ExecStart=env/bin/python3 Necronomicon.py
