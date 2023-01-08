@@ -1,9 +1,8 @@
-
-
+import logging
 
 def GetDayWeatherFromData(Data):
     days = list()
-
+    logging.info("Data: \n" + Data )
     #print(days)
     #print(len(Data))
     #print(Data)
@@ -13,7 +12,7 @@ def GetDayWeatherFromData(Data):
         #print (i)
         days.append({"date"  : Data[i]["date"]})
         days[i]["day"] = Data[i]["day"]
-        #print( Data[i]["date"])
+
 
     #print(days)
     return days

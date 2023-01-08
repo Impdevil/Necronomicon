@@ -54,7 +54,7 @@ async def enable_remoteControl(ctx, vmid):
                     await c2.prox_instances.wait_till_running(vmid)
                     await ctx.send("VM " + str(vmid) + " is now running")
 
-        ########## more functionality needed.
+        ########## more functionality needed. and requires ansible more than likely
     except:
         await ctx.send("could not start remote vnc")
         logging.error('vm + vnc could not be started ' + str(vmid))
@@ -75,7 +75,7 @@ async def stop_vm(ctx, vmid):
             logging.info(str('vm ' + str(vmid))+' was stopped  by ' + str(ctx.author.display_name))
     except:
         await ctx.send("vm could not be stopped")
-        logging.error('vm could not be stopped ' + str(vmid))
+        logging.error('vm could not be stopped ' + str(vmid) + " by " + ctx.author.display_name)
 
 @bot.command(name="shutdown_vm", help="tells the bot to stop a VM based on the ID")
 async def shutdown_vm(ctx, vmid):
@@ -89,10 +89,10 @@ async def shutdown_vm(ctx, vmid):
             async with ctx.typing():
                 await c2.prox_instances.wait_till_Stopped(vmid)
             await ctx.send("VM " + str(vmid) + ' has now been shut down by ' + str(ctx.author.display_name))
-            logging.info('vm was shutdown ' + str(vmid))
+            logging.info('vm was shutdown ' + str(vmid) + " by " + ctx.author.display_name)
     except:
         await ctx.send("vm could not be shutdown")
-        logging.error('vm could not be shutdown ' + str(vmid))
+        logging.error('vm could not be shutdown ' + str(vmid) + " by "+ ctx.author.display_name)
 
 
 @bot.command(name="vm_status", help="tells the bot to stop a VM based on the ID")

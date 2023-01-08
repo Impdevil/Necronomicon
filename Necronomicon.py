@@ -1,8 +1,8 @@
+import logging
 import Ghroth.app
 import c2
 import WeatherChecker
 import asyncio
-import logging
 import os
 
 
