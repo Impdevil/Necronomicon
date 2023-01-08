@@ -2,7 +2,7 @@ import logging
 
 def GetDayWeatherFromData(Data):
     days = list()
-    logging.info("Data: \n" + Data )
+    logging.info("Data: \n" + str(Data) )
     #print(days)
     #print(len(Data))
     #print(Data)
