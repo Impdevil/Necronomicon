@@ -16,6 +16,7 @@ def __main__():
         loop = asyncio.get_event_loop()
 
     logging.info("starting loop")
+    print("starting loop")
     loop.create_task(Ghroth.app.start_bot())
     loop.create_task(c2.Start_bot())
     loop.create_task(WeatherChecker.periodic_check())
