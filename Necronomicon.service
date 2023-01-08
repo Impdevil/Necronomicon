@@ -1,6 +1,6 @@
 [Unit]
 Description=Chatbot for controlling proxmox systems
-
+After=network.target
 
 [Service]
 Type=simple
@@ -8,3 +8,6 @@ User=pi
 WorkingDirectory=/home/pi/Necronomicon/
 Restart=always
 ExecStart=/home/pi/Necronomicon/env/bin/python3 Necronomicon.py
+
+[Install]
+WantedBy=multi-user.target
