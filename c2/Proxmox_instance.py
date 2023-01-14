@@ -1,10 +1,10 @@
-
+import logging
 from ssl import VerifyFlags
 import proxmoxer
 from proxmoxmanager import ProxmoxManager
 import asyncio
 import json
-import logging
+
 
 class Proxmox_instance:
     api=None

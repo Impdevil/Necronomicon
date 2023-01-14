@@ -1,10 +1,11 @@
 import logging
 #from systemd import journal
+import asyncio
+import os
 import Ghroth.app
 import c2
 import WeatherChecker
-import asyncio
-import os
+
 
 
 loggingmode = os.getenv("LOGGING_MODE")
@@ -19,7 +20,7 @@ def __main__():
     try:
         loop = asyncio.get_running_loop()
     except RuntimeError:
-        print("Error No Loop, Starting Loop.")
+        logging.info("Error No Loop, Starting Loop.")
         loop = asyncio.get_event_loop()
 
     logging.info("starting loop")

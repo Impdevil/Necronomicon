@@ -1,3 +1,4 @@
+import logging
 import datetime as dt
 import asyncio
 import discord_webhook
@@ -5,7 +6,7 @@ import os
 import WeatherChecker.GetData
 import WeatherChecker.RetrieveDayData
 
-import logging
+
 daysforecast = GetData.GetForecast()
 print(RetrieveDayData.WillItRain(RetrieveDayData.GetDayWeatherFromData(daysforecast)))
 SENTFORTODAY = False
