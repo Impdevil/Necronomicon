@@ -9,9 +9,9 @@ import os
 
 loggingmode = os.getenv("LOGGING_MODE")
 logging.basicConfig(filename="necronomicon.log", filemode=loggingmode, level=logging.INFO, format='%(asctime)s %(levelname)s: %(message)s', datefmt='%d-%b-%y %H:%M:%S')
-journal_out = journal.JournaldLogHandler()
-journal_out.setFormatter(logging.StrFormatStyle())
-logging.addHandler(journal)
+#journal_out = journal.JournaldLogHandler()
+#journal_out.setFormatter(logging.StrFormatStyle())
+#logging.addHandler(journal)
 
 
 def __main__():
