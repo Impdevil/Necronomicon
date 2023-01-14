@@ -1,5 +1,5 @@
 import logging
-from systemd import journal
+#from systemd import journal
 import Ghroth.app
 import c2
 import WeatherChecker
