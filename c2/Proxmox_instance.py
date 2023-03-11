@@ -27,10 +27,13 @@ class Proxmox_instance:
     def get_vm_status(self):
         statuslist= []
         for node in self.api.nodes.get():
-            for vm in self.api.nodes(node["node"]).qemu.get():
-                #print(vm)
-                statuslist.append('{}:{} status: {} for {}'.format(vm['vmid'], vm['name'],vm["status"], vm['uptime']))
-                print('{}:{} status: {} for {}'.format(vm['vmid'], vm['name'],vm["status"], vm['uptime']))
+            try:
+                for vm in self.api.nodes(node["node"]).qemu.get():
+                    #print(vm)
+                    statuslist.append('Node:{} {}:{} status: {} for {}'.format(node["node"],vm['vmid'], vm['name'],vm["status"], vm['uptime']))
+                    print('Node:{} {}:{} status: {} for {}'.format(node["node"],vm['vmid'], vm['name'],vm["status"], vm['uptime']))
+            except:
+                print(str(node) + "missing or offline")
         return statuslist
 
 
